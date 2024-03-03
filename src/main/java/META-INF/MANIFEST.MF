@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Main-Class: com.jorge.sistemaexperto.HelloApplication
+Class-Path: javafx-base-15.0.1.jar javafx-graphics-15.0.1-win.jar javafx
+ -fxml-15.0.1-win.jar javafx-base-15.0.1-win.jar javafx-graphics-15.0.1.
+ jar javafx-fxml-15.0.1.jar javafx-controls-15.0.1.jar javafx-controls-1
+ 5.0.1-win.jar
+
