@@ -160,9 +160,10 @@ public class HelloController implements Initializable {
         preferencia2.getItems().addAll(preferencias);
 
 
-        edad1.setText("25"); // Set initial value
-        edad2.setText("25"); // Set initial value
+        edad1.setText("25");
+        edad2.setText("25"); //Valores iniciales
 
+        //hace que solo acepten valores enteros
         edad1.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 edad1.setText(oldValue);
@@ -177,6 +178,7 @@ public class HelloController implements Initializable {
 
     }
 
+    //regla que evalua la compatibilidad a nivel de sexo y orientacion sexual
     public static boolean esAmor(String sexoC1, String sexoC2, String preferenciaC1, String preferenciaC2) {
 
 
@@ -210,13 +212,16 @@ public class HelloController implements Initializable {
         return false;
     }
 
-
+    //regla que evalúa si la diferencia de edad es un obstáculo para una relación romántica,
+    // la regla es ajustable de tal manera que se puede establecer una diferencia máxima que aumenta a medida que las edades
+    //de ambos son más elevadas, porque una diferencia de edad de 15 años cuando tienes 80 no es lo mismo que cuando tienes 18
     public static boolean esDiferenciaEdadInconveniente(int edad1, int edad2, int diferenciaMaxima, boolean esAmor) {
 
         // Calcular la media de las edades
         int edadMedia = (edad1 + edad2) / 2;
 
         //Si no es amor, puede ser amistad y no es tan importante la diferencia de edad
+        //se crea esta regla por si se desea usar para ajustan el nivel de compatibilidad posteriormente. De momento no se usa.
         if (!esAmor) {
             edadMedia = edadMedia + 20;
         }
@@ -231,6 +236,7 @@ public class HelloController implements Initializable {
         return diferenciaEdad <= diferenciaMaximaProporcional;
     }
 
+    //Reglas complejas que evalúan las interacciones entre diferentes aficiones comunes no comunes y dependiendo de si estamos evaluando amor o amistad
     public int evaluarCompatibilidad(Boolean deporteC1, Boolean deporteC2, Boolean leerC1, Boolean leerC2, Boolean cocinarC1, Boolean cocinarC2, Boolean viajarC1, Boolean viajarC2, Boolean hijosC1, Boolean hijosC2, Boolean salirC1, Boolean salirC2, Boolean esAmor) {
 
         int compatibilidad = 0;
@@ -313,6 +319,7 @@ public class HelloController implements Initializable {
         return compatibilidad;
     }
 
+    //en función de los resultados de puntuación devuelve niveles de compatibilidad en caso de amistad
     private String resultadoCompatibilidadAmistad (int puntuacion){
 
             String nivelAmistad;
@@ -343,6 +350,7 @@ public class HelloController implements Initializable {
             return nivelAmistad;
         }
 
+    //en función de los resultados de puntuación devuelve niveles de compatibilidad en caso de amor
     private String resultadoCompatibilidadAmor (int puntuacion){
 
         String nivelAmor;
